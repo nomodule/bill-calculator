@@ -5,22 +5,23 @@ const $newReading = document.querySelector("#newReading");
 const $totalBill = document.querySelector("#totalBill");
 const $energyCharges = document.querySelector("#energyCharges");
 const $extraChargesDivisor = document.querySelector("#extraChargesDivisor");
-
 const $calculateButton = document.querySelector("#calculate");
+const $details = document.querySelector("#details");
 
 $calculateButton.addEventListener("click", (e) => {
     e.preventDefault();
 
     // get per unit charges
-    const totalMainUnitConsumed = $newMainReading.value - $oldMainReading.value;
-    const perUnitCharges = ($energyCharges.value / totalMainUnitConsumed).toFixed(2);
+    const totalUnitConsumed = $newMainReading.value - $oldMainReading.value;
+    const perUnitCharges = ($energyCharges.value / totalUnitConsumed).toFixed(2);
 
     // calculate current user energey charges
-    const totalUnitConsumed = $newReading.value - $oldReading.value;
-    const onlyEnergyCharges = totalUnitConsumed * perUnitCharges;
+    const unitConsumed = $newReading.value - $oldReading.value;
+    const onlyEnergyCharges = unitConsumed * perUnitCharges;
 
     // calculate extra charges and merge it in energey charges
-    const extraCharges = ($totalBill.value - $energyCharges.value) / $extraChargesDivisor.value;
+    const totalExtraCharges = $totalBill.value - $energyCharges.value; 
+    const extraCharges = totalExtraCharges / $extraChargesDivisor.value;
     const billToPay = Math.round(onlyEnergyCharges + extraCharges);
 
     if (isNaN(billToPay)) {
@@ -29,9 +30,13 @@ $calculateButton.addEventListener("click", (e) => {
     }
 
     alert("Bill to pay : " + billToPay);
-    console.log(`
-        Per Unit Charges: ${perUnitCharges}
-        Total Unit Consumed: ${totalUnitConsumed}
-        Extra Charges: ${extraCharges}
-    `);
+
+    $details.innerHTML = `
+<b>Bill to pay</b>: ${billToPay}
+Per Unit Charges: ${perUnitCharges}
+Total Unit Consumed: ${totalUnitConsumed}
+Total Extra Charges: ${totalExtraCharges}
+Unit Consumed: ${unitConsumed}
+Extra Charges: ${extraCharges}
+`;
 });
