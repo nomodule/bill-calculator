@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bill Calculator</title>
-</head>
-<body>
-    <h1>Bill Calculator</h1>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bill Calculator</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+            integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <form>
+                <h1 class="h3">Energy Bill Calculator</h1>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="oldMainReading">Old Main Reading</label>
+                        <input class="u-full-width" type="text" id="oldMainReading" />
+                    </div>
+                    <div class="six columns">
+                        <label for="newMainReading">New Main Reading</label>
+                        <input class="u-full-width" type="text" id="newMainReading" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="oldReading">Old Reading</label>
+                        <input class="u-full-width" type="text" id="oldReading" />
+                    </div>
+                    <div class="six columns">
+                        <label for="newReading">New Reading</label>
+                        <input class="u-full-width" type="text" id="newReading" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="totalBill">Total Bill</label>
+                        <input class="u-full-width" type="text" id="totalBill" />
+                    </div>
+                    <div class="six columns">
+                        <label for="energyCharges">Energy Charges</label>
+                        <input class="u-full-width" type="text" id="energyCharges" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="six columns">
+                        <label for="extraChargesDivisor">Extra Charges Divisor</label>
+                        <input class="u-full-width" type="text" id="extraChargesDivisor" value="4" />
+                    </div>
+                </div>
+                <input id="calculate" class="button-primary" type="submit" value="Calculate" />
+            </form>
+        </div>
+
+        <script src="./main.js"></script>
+    </body>
 </html>
